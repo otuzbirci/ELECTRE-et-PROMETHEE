@@ -21,14 +21,19 @@ class Electre {
 		
 		// Le tableau des surclassement
 		int nonSurclasses[200][20];
+		
+		// Le tableau alternatives trié des moins surclassées aux plus surclassées
+		int nonSurclasseesGlobaux[200][2];
 	
 	public:
 		Electre(int donnees[][10], double p, double *concordances, double *discordances);
 		void afficherIndexC() const;
 		void afficherIndexD() const;
 		void afficherNonSurclasses() const;
+		void afficherNbSurclassee() const;
 
 	private:
 		void calculerIndices();
 		void calculerNonSurclasses();
+		void trierNonSurclassesGlobaux();
 };

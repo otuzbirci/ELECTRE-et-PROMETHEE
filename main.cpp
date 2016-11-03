@@ -40,11 +40,13 @@ int main(int argc, char* argv[]) {
     // Ensuite, c'est à vous à .... 
     
     Electre e(d, poids, concordance, discordance);
-    e.afficherIndexC();
+    //~ e.afficherIndexC();
     cout << endl;
-    e.afficherIndexD();
+    //~ e.afficherIndexD();
     cout << endl;
-    e.afficherNonSurclasses();
+    //~ e.afficherNonSurclasses();
+    cout << endl;
+    e.afficherNbSurclassee();
     
 	return 0;
 }

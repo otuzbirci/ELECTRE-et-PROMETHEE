@@ -47,6 +47,13 @@ void Electre::afficherNonSurclasses() const {
 	}
 }
 
+void Electre::afficherNbSurclassee() const {
+	for (int i = 0; i < 200; ++i) {
+		cout << this->nonSurclasseesGlobaux[i][0] << ": " << this->nonSurclasseesGlobaux[i][1] << "\t";
+	}
+	cout << endl;
+}
+
 void Electre::calculerIndices() {
 	int nbSup;
 	double diffMax, diff;
@@ -72,6 +79,12 @@ void Electre::calculerNonSurclasses() {
 	bool estSurclasse;
 	double concord, discord;
 	int i1, i2;
+	
+	for (i1 = 0; i1 < 200; ++i1) {
+		this->nonSurclasseesGlobaux[i1][0] = i1;
+		this->nonSurclasseesGlobaux[i1][1] = 0;
+	}
+	
 	for (int c = 0; c < 4; ++c) {				// pour chaque valeur de concordance
 		concord = this->concordances[c];
 		for (int d = 0; d < 5; ++d) {				// pour chaque valeur de discordance
@@ -93,8 +106,30 @@ void Electre::calculerNonSurclasses() {
 					this->nonSurclasses[5*c+d][i1] = 0;
 				} else {
 					this->nonSurclasses[5*c+d][i1] = 1;
+					this->nonSurclasseesGlobaux[i1][1] = this->nonSurclasseesGlobaux[i1][1] + 1;
 				}
 			}
 		}
 	}
+}
+
+/// TODO : Faire la même chose avec les entiers précisés dans les tableaux
+void Electre::trierNonSurclassesGlobaux() {
+	//~ bool changement;
+	//~ int tab1[2], tab2[2];
+	//~ 
+	//~ do {
+		//~ changement = false;
+		//~ tab1 = this->nonSurclasseesGlobaux[0];
+		//~ for (int i = 1; i < 200; ++i) {
+			//~ tab2[1] = this->nonSurclasseesGlobaux[i];
+			//~ if (tab1[1] > tab2[1]) {
+				//~ this->nonSurclasseesGlobaux[i-1] = tab2;
+				//~ this->nonSurclasseesGlobaux[i] = tab1;
+				//~ changement = true;
+			//~ } else {
+				//~ tab1 = tab2;
+			//~ }
+		//~ }
+	//~ } while (changement);
 }

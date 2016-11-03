@@ -83,7 +83,7 @@ void Electre::calculerNonSurclasses() {
 					if ((indexC[i2][i1] >= concord) && (indexD[i2][i1] <= discord) && (i1 != i2)) {
 						//~ cout<<"indexC["<<i2<<"]["<<i1<<"]="<<indexC[i2][i1]<<">="<<concord<<endl;
 						//~ cout<<"indexD["<<i2<<"]["<<i1<<"]="<<indexD[i2][i1]<<"<="<<discord<<endl;
-						//~ cout << endl;
+						//~ cout<<endl;
 						estSurclasse = true;
 					} else {
 						i2 = i2 + 1;

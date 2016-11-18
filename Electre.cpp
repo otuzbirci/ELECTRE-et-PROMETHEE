@@ -16,7 +16,7 @@ void Electre::afficherIndexC() const {
 	cout << "Indices de concordance" << endl;
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
-			cout << indexC[i][j] << " & ";
+			cout << indexC[i][j] << "\t";
 		}
 		cout << endl;
 	}
@@ -26,7 +26,7 @@ void Electre::afficherIndexD() const {
 	cout << "Indices de discordance" << endl;
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
-			cout << indexD[i][j] << " & ";
+			cout << indexD[i][j] << "\t";
 		}
 		cout << endl;
 	}
@@ -39,10 +39,10 @@ void Electre::afficherNonSurclasses() const {
 		concord = this->concordances[c];
 		for (int d = 0; d < 5; ++d) {				// pour chaque valeur de discordance
 			discord = this->discordances[d];
-			cout << "(c="<<concord<<",d="<<discord<<") & ";
-			for (int i = 0; i < 200; ++i) {				// pour chaque alternative
+			cout << "(concordance="<<concord<<",discordance="<<discord<<") ->\t";
+			for (int i = 0; i < 10; ++i) {				// pour chaque alternative
 				if (this->nonSurclasses[c*5+d][i] == 1) {
-					cout << ", " << i;
+					cout << i << "\t";
 				}
 			}
 			cout << endl;
@@ -52,16 +52,9 @@ void Electre::afficherNonSurclasses() const {
 
 void Electre::afficherNbSurclassee() const {
 	cout << "Nombre d'apparition dans le noyau" << endl;
-	cout << 1 << " & " << nonSurclasseesGlobaux[0][0];
-	for (int i = 1; i < 200; ++i) {
-		if (this->nonSurclasseesGlobaux[i][1] != this->nonSurclasseesGlobaux[i-1][1]) {
-			cout << " & " << this->nonSurclasseesGlobaux[i-1][1] << endl;
-			cout << i+1 << " & " << nonSurclasseesGlobaux[i][0];
-		} else {
-			cout << ", " << this->nonSurclasseesGlobaux[i][0];
-		}
+	for (int i = 0; i < 200; ++i) {
+		cout << this->nonSurclasseesGlobaux[i][0] << " : " << this->nonSurclasseesGlobaux[i][1] << endl;
 	}
-	cout << " & " << this->nonSurclasseesGlobaux[199][1] << endl;
 	cout << endl;
 }
 

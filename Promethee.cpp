@@ -23,28 +23,35 @@ double Promethee::fonction_de_preference (int diff, int p, int q) const {
 
 void Promethee::afficherPreferencesGlobales() {
 	cout << "Préférences globales" << endl;
+	for (int seuil = 0; seuil < 3; ++seuil) {
+		cout << "\t{"<<this->p[seuil]<<","<<this->q[seuil]<<"}\t";
+	}
+	cout << endl;
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
 			cout << i << ":" << j << "->\t";
 			for (int seuil = 0; seuil < 3; ++seuil) {
-				cout << this->preferencesGlobales[i][j][seuil] << "\t";
+				cout << this->preferencesGlobales[i][j][seuil] << "\t\t";
 			}
 			cout << endl;
 		}
 	}
+	cout << endl;
 }
 
 void Promethee::afficherScores() {
-	cout << "Scores totaux" << endl << endl;
-	//cout << "{"<<this->p[seuil]<<","<<this->q[seuil]<<"}"<<endl;
-	for (int i = 0; i < 200; ++i) {
-		cout << ""
-		cout << this->scores[i][seuil][0];
-		for (int seuil = 0; seuil < 3; ++seuil) {
-			cout <<  " & " << this->scores[i][seuil][0];
-		}
+	cout << "Scores totaux" << endl;
+	for (int seuil = 0; seuil < 3; ++seuil) {
+		cout << "{"<<this->p[seuil]<<","<<this->q[seuil]<<"}\t\t\t\t";
 	}
+	cout << endl;
+	for (int i = 0; i < 200; ++i) {
+		for (int seuil = 0; seuil < 3; ++seuil) {
+			cout << this->scores[i][seuil][0] << ":\t(" << this->scores[i][seuil][1] << ")\t\t";
+		}
 		cout << endl;
+	}
+	cout << endl;
 }
 
 void Promethee::calculerPreferencesGlobales() {

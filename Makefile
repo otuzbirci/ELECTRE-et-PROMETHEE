@@ -1,5 +1,5 @@
 CC = g++
-SOURCES = Electre.cpp
+SOURCES = Electre.cpp Promethee.cpp
 CFLAGS = -Wall -g
 .PHONY = clean
 

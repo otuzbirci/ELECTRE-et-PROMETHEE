@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include "Electre.hpp"
+#include "Promethee.hpp"
 
 using namespace std;
 
@@ -39,15 +40,26 @@ int main(int argc, char* argv[]) {
     
     // Ensuite, c'est à vous à .... 
     
-    Electre e(d, poids, concordance, discordance);
-    //~ e.afficherIndexC();
+	cout<<"------------------------------------------------------------------------"<<endl;
+	cout<<"---------------------------------ELECTRE--------------------------------"<<endl;
+	cout<<"------------------------------------------------------------------------"<<endl;
+//~ 
+    Electre electre(d, poids, concordance, discordance);
+    electre.afficherIndexC();
     cout << endl;
-    //~ e.afficherIndexD();
+    electre.afficherIndexD();
     cout << endl;
-    //~ e.afficherNonSurclasses();
+    electre.afficherNonSurclasses();
     cout << endl;
-    e.afficherNbSurclassee();
+    electre.afficherNbSurclassee();
     
+    cout<<"------------------------------------------------------------------------"<<endl;
+	cout<<"--------------------------------PROMETHEE-------------------------------"<<endl;
+	cout<<"------------------------------------------------------------------------"<<endl;
+    
+    Promethee promethee(d, poids, p, q);
+    promethee.afficherPreferencesGlobales();
+    promethee.afficherScores();
 	return 0;
 }
 
@@ -72,15 +84,4 @@ void affichage (int d[][10]) {
 			cout << d[i][j] << "\t";	 
 		cout << endl;
 	}
-}
-
-// Fonction de préférence
-float fonction_de_preference (int diff, int p, int q) {
-	
-	if (diff <= p) 
-		return 0.0;
-	else if (diff >= q)
-		return 1.0;
-	else 
-	 	return 1.0*(diff - p)/(q - p);
 }
